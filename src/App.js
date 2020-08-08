@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Container from "./components/Container";
+import ContainerFlex from "./components/ContainerFlex";
+import Main from "./components/Main";
+import Aside from "./components/Aside";
+import Header from "./components/Header";
+
+import { DataProvider } from "./contexts/DataContext";
+import { VisualizacionProvider } from "./contexts/VisibleContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DataProvider>
+        <VisualizacionProvider>
+          <LanguageProvider>
+            <Container>
+              <Header />
+              <ContainerFlex>
+                <Aside />
+                <Main />
+              </ContainerFlex>
+            </Container>
+          </LanguageProvider>
+        </VisualizacionProvider>
+      </DataProvider>
     </div>
   );
 }
